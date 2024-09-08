@@ -96,6 +96,9 @@ section {
   width: 90%;
   height: 90%;
 }
+
+
+
 .details-container {
   width: 400px;
   padding: 1.5rem;
@@ -135,3 +138,4 @@ footer {
 footer p {
   text-align: center;
 }
+
