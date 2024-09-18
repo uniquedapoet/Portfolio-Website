@@ -268,10 +268,18 @@ section {
 }
 
 .about-containers {
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
+
+.about-containers > * {
+  flex: 1 1 calc(50% - 2rem); /* Two items per row */
+}
+
+
 
 .about-details-container {
   justify-content: center;
@@ -388,6 +396,7 @@ article .icon {
   justify-content: center;
   flex-direction: column;
   height: 70vh;
+  margin-top: 4rem;
 }
 
 .contact-info-upper-container {

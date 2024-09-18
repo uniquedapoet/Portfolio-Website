@@ -108,6 +108,12 @@
     }
   }
   
+  @media (max-width: 768px) {
+    .about-containers > * {
+      flex: 1 1 100%; /* Single column on smaller screens */
+    }
+  }
+  
   @media screen and (max-width: 480px) {
     .details-container {
       flex: 1 1 100%; /* Single column on phones */
