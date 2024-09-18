@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Landing Page</title>
+    <link rel="stylesheet" href="projectStyle.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>Formula 1 Api</h1>
+        <ul class="nav-links">
+          <li><a href="index.html">Back To Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About the Project</h2>
+        <p style="margin: 20px">
+          This Loan Default Model and Exploratory Data Analysis project was
+          developed to enhance my expertise in Machine Learning and data
+          analysis. The project involves a thorough examination of loan data,
+          followed by the creation of a predictive model that assesses the
+          likelihood of loan defaults. The complete implementation is available
+          in a Jupyter Notebook on Kaggle.
+          <a
+            href="https://www.kaggle.com/code/eddiebenjamin/credit-risk-model-and-eda"
+            target="_blank"
+          >
+            [Check it out here]
+          </a>
+        </p>
+
+        <p style="margin: 20px">
+          The dataset, sourced from Kaggle, includes various loan attributes
+          such as loan amount, interest rate, and borrower income. After
+          cleaning and preprocessing the data for accuracy and consistency, I
+          conducted an exploratory data analysis (EDA) to identify patterns and
+          correlations. This analysis included visualizations to illustrate how
+          different factors impact the probability of loan default, providing
+          valuable insights into borrower behavior.
+        </p>
+        <p style="margin: 20px">
+          In building the predictive model, the data was split into training and
+          testing sets. Given the class imbalance in the data, I applied the
+          SMOTE technique to balance it. Various models, including Logistic
+          Regression, Random Forest, and advanced stacking models, were trained
+          and evaluated using metrics such as accuracy, precision, recall, and
+          F1 score. The final model, a stacking ensemble of XGBoost, CatBoost,
+          and LightGBM, with a neural network as the meta-classifier, achieved a
+          high F1 score of 0.96, demonstrating its effectiveness in predicting
+          loan defaults.
+        </p>
+      </section>
+      <section id="features">
+        <h2>Features</h2>
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/Property_Distribution.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <li>
+              This multi-panel visualization, created using the Altair library,
+              and provides an in-depth view of how various borrower
+              characteristics, such as age, income ratio, loan amount, and loan
+              intent, are distributed across both defaulted and fully paid
+              loans.
+            </li>
+            <li>
+              By analyzing these distributions, I was able to identify important
+              patterns and trends, which guided the feature engineering and
+              model-building process. These insights were crucial in
+              understanding the underlying factors contributing to loan
+              defaults.
+            </li>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/conf_matrix.svg"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <li>
+              This is a confusion matrix that illustrates the performance of the
+              final model on the test set. The confusion matrix shows the number
+              of true positives (bottum left), true negatives (top left), false positives(top right), and false
+              negatives (bottum left) predicted by the model.
+            </li>
+            <li>
+              The high number of true positives and true negatives, along with
+              the low number of false positives and false negatives, indicate
+              that the model is effective in predicting loan defaults and
+              non-defaults.
+            </li>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/ShapFeatureImportance.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <li>
+              This feature importance plot, generated using the SHAP library, it
+              highlights the most important features in the final model.
+            </li>
+            <li>
+              Dots represent individual loans. Their position on the horizontal
+              axis shows whether they increase (right of mid line) or decrease (left of mid line) the
+              chance of default.
+            </li>
+            <li>
+              Color indicates the feature's value: blue means low, and red
+              means high.
+            </li>
+            <li>
+              For example, a high DTI (debt-to-income ratio) increases the likelihood of default, while a high annual income decreases it.
+            </li>
+          </div>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          If you have any questions or would like to get in touch, please
+          <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Eduardo Benjamin</p>
+    </footer>
+  </body>
+</html>
