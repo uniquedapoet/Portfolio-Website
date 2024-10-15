@@ -225,7 +225,7 @@ p {
 
 @media (max-width: 480px) {
   .about-containers {
-    /* flex-direction: column; */
+    flex-direction: column;
   }
 
   .details-container {
