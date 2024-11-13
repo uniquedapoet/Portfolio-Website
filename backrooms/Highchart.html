@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio Value Chart with Date Range and Stock Selector</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<section>
+    <div id="portfolio-chart" style="width: 100%; height: 600px;"></div>
+    <div id="controls">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" />
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" />
+        <label for="stock-select">Select Stock:</label>
+        <select id="stock-select">
+            <option value="all">All Stocks</option>
+        </select>
+        <button id="update-chart">Update Chart</button>
+    </div>
+    <script>
+        const csvFile = 'data.csv';
+        let parsedData = null;
+        let stocks = {};
+
+        function filterDataByDateAndStock(startDate, endDate, selectedStock) {
+            // Function to filter data by date and stock
+            const filteredStocks = {};
+            Object.keys(stocks).forEach(stockName => {
+                if (selectedStock !== 'all' && stockName !== selectedStock) return;
+                filteredStocks[stockName] = stocks[stockName].filter(row => {
+                    const rowDate = new Date(row.Date);
+                    return (!startDate || rowDate >= startDate) && (!endDate || rowDate <= endDate);
+                });
+            });
+            return filteredStocks;
+        }
+
+        function updateChart(filteredStocks) {
+            const seriesData = [];
+            Object.keys(filteredStocks).forEach(stockName => {
+                const stockData = filteredStocks[stockName];
+                seriesData.push({
+                    name: stockName,
+                    data: stockData.map(row => parseFloat(row.PortfolioValue)),
+                });
+            });
+
+            Highcharts.chart('portfolio-chart', {
+                chart: { type: 'line' },
+                title: { text: 'Portfolio Value Stocks' },
+                xAxis: {
+                    title: { text: 'Date' },
+                    categories: Object.values(filteredStocks)[0]?.map(row => row.Date) || [],
+                    labels: { rotation: 45 }
+                },
+                yAxis: { title: { text: 'Portfolio Value ($)' } },
+                tooltip: { shared: false, crosshairs: true },
+                series: seriesData
+            });
+        }
+
+        function populateDropdown() {
+            const dropdown = document.getElementById('stock-select');
+            Object.keys(stocks).forEach(stockName => {
+                const option = document.createElement('option');
+                option.value = stockName;
+                option.textContent = stockName;
+                dropdown.appendChild(option);
+            });
+        }
+
+        Papa.parse(csvFile, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                parsedData = results.data;
+                stocks = {};
+                parsedData.forEach(row => {
+                    const stockName = row.StockName;
+                    if (!stocks[stockName]) stocks[stockName] = [];
+                    stocks[stockName].push(row);
+                });
+                populateDropdown();
+                updateChart(stocks);
+            }
+        });
+
+        document.getElementById('update-chart').addEventListener('click', () => {
+            const startDateInput = document.getElementById('start-date').value;
+            const endDateInput = document.getElementById('end-date').value;
+            const selectedStock = document.getElementById('stock-select').value;
+
+            const startDate = startDateInput ? new Date(startDateInput) : null;
+            const endDate = endDateInput ? new Date(endDateInput) : null;
+
+            const filteredStocks = filterDataByDateAndStock(startDate, endDate, selectedStock);
+            updateChart(filteredStocks);
+        });
+    </script>
+</section>
+<section>
+    
+</section>
+</html>
