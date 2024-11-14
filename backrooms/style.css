@@ -1,14 +1,26 @@
 .charts-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin: 2rem;
+  display: flex; /* Use flexbox to place items side by side */
+  justify-content: space-between; /* Space out the items */
+  gap: 1rem; /* Add spacing between the charts */
+  width: 100%;
+  margin-top: 20px; /* Optional: Adjust vertical spacing */
 }
 
-#portfolio-chart,
+#portfolio-chart {
+  flex: 6; /* Allocate 60% of the width */
+  height: 600px; /* Ensure consistent height */
+  border: 1px solid #ccc; /* Optional: Add a border for visibility */
+}
+
 #treemap-container {
-  height: 600px;
-  width: 100%;
+  flex: 4; /* Allocate 40% of the width */
+  height: 600px; /* Ensure consistent height */
+  border: 1px solid #ccc; /* Optional: Add a border for visibility */
+}
+
+.active {
+  background-color: green; /* Change to your desired color */
+  color: white;
 }
 
 #controls {
@@ -34,3 +46,54 @@ nav {
   list-style: none;
   font-size: 1.5rem;
 }
+
+
+
+/* NAVIGATION */
+nav,
+.nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+
+}
+
+#features {
+  justify-content: center;
+  align-items: center;
+  height: 17vh;
+  margin: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+
