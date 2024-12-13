@@ -46,6 +46,15 @@ const treemapData = [
 ];
 
 // Convert treemap data to hierarchical format
+// Parent Node
+// color: "#544fc5"
+// id : "Consumer Cyclical"
+// name : "Consumer Cyclical"
+
+// Child Node
+// name : "AMZN"
+// parent : "Consumer Cyclical"
+// value : 54705.79
 const hierarchicalData = treemapData.reduce((acc, item) => {
   const sectorIndex = acc.findIndex((group) => group.id === item.sector);
   if (sectorIndex === -1) {
@@ -79,108 +88,113 @@ function filterDataByDateAndStock(startDate, endDate, selectedStock = "all") {
   return filteredStocks;
 }
 
-// Update the line chart with dual-axis
+// Function to create and update the line graph
 function updateChart(filteredStocks, stockName = null) {
+  // Initialize an array to hold the data series for the chart
   const seriesData = [];
-  let stockPriceData = null;
+  let stockPriceData = null; // Variable to hold stock price data if a specific stock is selected
 
+  // Loop through the filteredStocks
   Object.keys(filteredStocks).forEach((stockName) => {
-    const stockData = filteredStocks[stockName];
+    const stockData = filteredStocks[stockName]; // Extract data for the current stock
     seriesData.push({
       name: `${stockName} Portfolio Value`,
-      data: stockData.map((row) => parseFloat(row.PortfolioValue)),
-      yAxis: 0, // Use the first y-axis
+      data: stockData.map((row) => parseFloat(row.PortfolioValue)), // Extract and parse portfolio values
+      yAxis: 0, // Use left y-axis
     });
   });
 
-  // Add stock price series if a stock is selected
+  // If a specific stock is selected and its data exists
   if (stockName && stocks[stockName]) {
-    stockPriceData = stocks[stockName].map((row) =>
-      parseFloat(row.StockPrice)
-    ); // Ensure "StockPrice" column exists
+    // Extract and parse stock price data
+    stockPriceData = stocks[stockName].map((row) => parseFloat(row.StockPrice));
 
+    // Add the stock price data as a new series
     seriesData.push({
-      name: `${stockName} Stock Price`,
-      data: stockPriceData,
-      yAxis: 1, // Use the second y-axis
-      tooltip: { valuePrefix: "$" },
+      name: `${stockName} Stock Price`, // Label for the stock price series
+      data: stockPriceData, // Stock price values
+      yAxis: 1, // Use right y-axis
+      tooltip: { valuePrefix: "$" }, // Add a dollar sign prefix to the tooltip values
     });
   }
 
+  // Configure and render the Highcharts chart
   Highcharts.chart("portfolio-chart", {
-    chart: { type: "line" },
-    title: { text: "Portfolio Value and Stock Price" },
+    chart: { type: "line" }, // Specify the chart type as a line chart
+    title: { text: "Portfolio Value and Stock Price" }, // Chart title
     xAxis: {
-      title: { text: "Date" },
+      title: { text: "Date" }, // Label for the x-axis
       categories:
-        Object.values(filteredStocks)[0]?.map((row) => row.Date) || [],
-      labels: { rotation: 90 },
+        Object.values(filteredStocks)[0]?.map((row) => row.Date) || [], // Extract dates for the x-axis
+      labels: { rotation: 90 }, // Rotate x-axis labels for better visibility
     },
     yAxis: [
       {
-        title: { text: "Portfolio Value ($)" },
-        min: useGlobalMinMax ? globalMinValue : null,
-        max: useGlobalMinMax ? globalMaxValue : null,
-        opposite: false,
+        title: { text: "Portfolio Value ($)" }, // Title for the first y-axis
+        min: useGlobalMinMax ? globalMinValue : null, // Use global min value if enabled
+        max: useGlobalMinMax ? globalMaxValue : null, // Use global max value if enabled
+        opposite: false, // Place this axis on the left side
       },
       {
-        title: { text: "Stock Price ($)" },
-        opposite: true, // Stock price axis on the right side
+        title: { text: "Stock Price ($)" }, // Title for the second y-axis
+        opposite: true, // Place this axis on the right side
       },
     ],
-    tooltip: { shared: true, crosshairs: true },
-    series: seriesData,
+    tooltip: { shared: false, crosshairs: true},
+    series: seriesData, // Add the prepared data series to the chart
   });
 }
 
+console.log(hierarchicalData);
+
 // Update the treemap
-function updateTreemap() {
+function createTreemap() {
   Highcharts.chart("treemap-container", {
-    chart: { type: "treemap" },
-    title: { text: "Final Portfolio Value Breakdown by Sector and Stock" },
+    chart: { type: "treemap" }, // Define the chart type as treemap
+    title: { text: "Holding Market Value By Industry" }, // Chart title
     series: [
       {
-        type: "treemap",
-        layoutAlgorithm: "squarified",
+        type: "treemap", // Define series type as treemap for hierarchical data
+        layoutAlgorithm: "squarified", // Algorithm to arrange the treemap tiles
         levels: [
           {
-            level: 1,
+            level: 1, // Configuration for parent nodes (sectors)
             dataLabels: {
-              enabled: true,
-              align: "left",
-              verticalAlign: "top",
+              enabled: true, // Enable data labels for sectors
+              align: "left", // Align data labels to the left
+              verticalAlign: "top", // Align data labels to the top
               style: {
-                fontSize: "16px",
-                fontWeight: "bold",
-                textOutline: "none",
+                fontSize: "16px", // Font size for sector labels
+                fontWeight: "bold", // Bold sector labels
+                textOutline: "none", // Remove text outline for cleaner look
               },
-              padding: 5,
+              padding: 5, // Add padding around sector labels
             },
-            borderWidth: 3,
+            borderWidth: 3, // Border width for sector tiles
           },
           {
-            level: 2,
+            level: 2, // Configuration for child nodes (stocks)
             dataLabels: {
-              enabled: true,
-              format: "{point.name}: ${point.value:.2f}",
-              style: { fontSize: "12px" },
+              enabled: true, // Enable data labels for stocks
+              format: "{point.name}: ${point.value:.2f}", // Format labels to show stock name and value
+              style: { fontSize: "12px" }, // Font size for stock labels
             },
-            borderWidth: 1,
+            borderWidth: 1, // Border width for stock tiles
           },
         ],
-        data: hierarchicalData,
+        data: hierarchicalData, // Data for the treemap (sector and stock hierarchy)
         events: {
           click: function (event) {
-            const stockName = event.point.name;
+            const stockName = event.point.name; // Capture the stock name from the clicked point
             if (stocks[stockName]) {
-              const filteredStocks = { [stockName]: stocks[stockName] };
-              updateChart(filteredStocks, stockName); // Pass stockName for stock price
+              const filteredStocks = { [stockName]: stocks[stockName] }; // Filter data for the selected stock
+              updateChart(filteredStocks, stockName); // Update the chart with the selected stock
             }
           },
         },
       },
     ],
-    tooltip: { pointFormat: "<b>{point.name}</b>: ${point.value:.2f}" },
+    tooltip: { pointFormat: "<b>{point.name}</b>: ${point.value:.2f}" }, // Tooltip format showing stock name and value
   });
 }
 
@@ -199,7 +213,7 @@ Papa.parse(csvFile, {
 
     calculateGlobalRanges(Object.values(stocks));
     updateChart(stocks);
-    updateTreemap();
+    createTreemap();
   },
 });
 
