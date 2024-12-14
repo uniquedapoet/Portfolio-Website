@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
       
         tr.innerHTML = `
-        <td>${stockName}</td>
+        <td><button class="stock-button" data-stock="${stockName}">${stockName}</button></td>
         <td>${industry}</td>
         <td>${units.toFixed(2)}</td>
         <td>$${currentPrice.toFixed(2)}</td>
@@ -537,10 +537,17 @@ function createStockChart(stockName = "TOTAL") {
     title: { text: dataToPlot.title },
     xAxis: {
       categories: dataToPlot.xAxisCategories,
-      tickInterval: 30, 
+      tickInterval: 22, 
+      labels: {
+        formatter: function () {
+          const date = new Date(this.value);
+          return date.toLocaleString("default", { month: "short" });
+        }
+      }
     },
     yAxis: {
       title: { text: stockName === "TOTAL" ? "Portfolio Value ($)" : "Stock Price ($)" },
+      
     },
     series: [
       {
