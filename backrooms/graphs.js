@@ -164,7 +164,7 @@ function createTreemap() {
               align: "left", // Align data labels to the left
               verticalAlign: "top", // Align data labels to the top
               style: {
-                fontSize: "16px", // Font size for sector labels
+                fontSize: "14px", // Font size for sector labels
                 fontWeight: "bold", // Bold sector labels
                 textOutline: "none", // Remove text outline for cleaner look
               },
@@ -391,13 +391,20 @@ document.addEventListener("DOMContentLoaded", () => {
         ? '<span style="color: red;">▼</span>'   // Red down arrow
         : ''; // No arrow for zero change
     
-      // Fill in row data
-      tr.innerHTML = `
-        <td><button class="stock-button" data-stock="${stockName}">${stockName}</button></td>
+      
+        tr.innerHTML = `
+        <td>${stockName}</td>
         <td>${industry}</td>
         <td>${units.toFixed(2)}</td>
         <td>$${currentPrice.toFixed(2)}</td>
-        <td>
+        <td style="
+          background: linear-gradient(to right, #3b5f7f ${percentageOfTotal}%, #f4f4f4 ${percentageOfTotal}%);
+          text-align: right;
+          padding-right: 10px;
+          color: #000;
+          height: 40px; /* Fix the cell height */
+          line-height: 40px; /* Vertically center text */
+        ">
           $${marketValue.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
@@ -405,8 +412,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </td>
         <td>$${todayChange} ${arrow}</td>
         <td>${gainLoss}%</td>
-        <td><div id="chart-${index}" style="width: 200px; height: 30px;"></div></td>
-        `;
+        <td style="height: 40px;"><div id="chart-${index}" style="width: 200px; height: 40px;"></div></td>
+      `;
+      
+
       
 
       // Append the row to the table body
