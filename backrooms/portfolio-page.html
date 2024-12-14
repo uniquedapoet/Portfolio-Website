@@ -4,30 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Personal Stock Portfolio Dashboard</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/treemap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <link rel="stylesheet" href="portfolio-page.css" />
 </head>
 <body>
 
   <header>
     <h1>Personal Stock Portfolio Dashboard</h1>
-    <button>Refresh Prices</button>
   </header>
 
   <section class="key-metrics">
     <div class="metric">
-      <span>Total Holding Market Value:</span>
-      <strong>$31,813.03</strong>
+      Total Market Value: $<strong id="total-market-value">0.00</strong>
     </div>
     <div class="metric">
-      <span>Today's Change:</span>
-      <strong>$69.64 (0.22%)</strong>
+      Todays Change: $<strong id="todays-change">0.00</strong>
     </div>
     <div class="metric">
       <span>Unrealized Gain/(Loss):</span>
-      <strong>$16,135.18</strong>
+      <strong id="unrealized-gain">0</strong>
     </div>
   </section>
-
   <main>
     <section class="holdings-table">
       <table>
@@ -43,28 +44,37 @@
             <th>Last 12 Months</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Populate with data -->
+        <tbody id="stock-table-body">
         </tbody>
       </table>
     </section>
 
     <!-- Charts Section: Bar Chart and Pie Chart side-by-side -->
     <section class="charts-row">
-      <div class="chart-container">
-        <h3>Portfolio by Industry (Bar)</h3>
-        <canvas id="barChart"></canvas>
+      <div class="chart-container" style="text-align: center;">
+        <h2>Spotlight</h2>
+        <p>Click A Stock to see the past year in the Spotlight</p>
+        <div id="stock-chart"></div>
       </div>
-      <div class="chart-container">
-        <h3>Portfolio by Industry (Pie)</h3>
-        <canvas id="pieChart"></canvas>
+      <div class="chart-container" style="text-align: center;">
+        <h2>Holding Market Value By Industry</h2>
+        <div id="treemap-container" style=""></div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2024 Your Name/Company</p>
+    <p>© 2024 FlowForm Systems</p>
   </footer>
-    <script src="app.js"></script>
+  <div id="controls" style="display: none;">
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" />
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" />
+    <button id="update-chart">Update Chart</button>
+    <button id="reset-chart">Reset Stocks</button>
+    <button id="toggle-global-min-max">Disable Global Min/Max</button>
+  </div>
+    <script src="graphs.js"></script>
 </body>
 </html>
