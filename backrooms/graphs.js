@@ -1,3 +1,4 @@
+
 const csvFile = "data.csv";
 
 let parsedData = null;
@@ -6,7 +7,7 @@ let globalMinDate = null;
 let globalMaxDate = null;
 let globalMinValue = null;
 let globalMaxValue = null;
-let useGlobalMinMax = true; 
+let useGlobalMinMax = true;
 
 // Calculate global date and value ranges for consistent scales
 function calculateGlobalRanges(data) {
@@ -151,7 +152,7 @@ console.log(hierarchicalData);
 function createTreemap() {
   Highcharts.chart("treemap-container", {
     chart: { type: "treemap" }, // Define the chart type as treemap
-    title:  null , // Chart title
+    title: null, // Chart title
     series: [
       {
         type: "treemap", // Define series type as treemap for hierarchical data
@@ -194,6 +195,8 @@ function createTreemap() {
         },
       },
     ],
+    exporting: { enabled: false }, // Disable the dropdown menu
+    credits: { enabled: false }, // Disable Highcharts credits
     tooltip: { pointFormat: "<b>{point.name}</b>: ${point.value:.2f}" }, // Tooltip format showing stock name and value
   });
 }
@@ -287,13 +290,15 @@ document.addEventListener("DOMContentLoaded", () => {
       undefined,
       { minimumFractionDigits: 2, maximumFractionDigits: 2 }
     );
-    unrealizedGainElement.textContent = '$'+(totalMarketValue - Object.keys(groupedData).length * 10000).toFixed(2);
+    unrealizedGainElement.textContent =
+      "$" +
+      (totalMarketValue - Object.keys(groupedData).length * 10000).toFixed(2);
   }
 
   function updateTodaysChange(groupedData) {
     let dailyChangeMonetary = 0;
     let totalPreviousMarketValue = 0;
-  
+
     // Iterate over grouped data and calculate the total market value
     Object.keys(groupedData).forEach((stockName) => {
       const stockData = groupedData[stockName];
@@ -301,40 +306,44 @@ document.addEventListener("DOMContentLoaded", () => {
       const units = parseFloat(lastEntry.SharesHeld || 0);
       const currentPrice = parseFloat(lastEntry.StockPrice || 0);
       const marketValue = calculateMarketValue(units, currentPrice);
-  
-      const previousPrice = parseFloat(stockData[stockData.length - 2]?.StockPrice || 0);
+
+      const previousPrice = parseFloat(
+        stockData[stockData.length - 2]?.StockPrice || 0
+      );
       const previousMarketValue = calculateMarketValue(units, previousPrice);
-  
-      if (previousMarketValue) { // Avoid division by zero
+
+      if (previousMarketValue) {
+        // Avoid division by zero
         const dailyChange = marketValue - previousMarketValue;
         dailyChangeMonetary += dailyChange;
         totalPreviousMarketValue += previousMarketValue;
       }
     });
-  
+
     // Calculate daily change percentage
     const dailyChangePercentage = totalPreviousMarketValue
       ? (dailyChangeMonetary / totalPreviousMarketValue) * 100
       : 0;
-    
-    const arrow = dailyChangeMonetary > 0 
-    ? '<span style="color: green;">▲</span>' // Green up arrow
-    : dailyChangeMonetary < 0
-    ? '<span style="color: red;">▼</span>'   // Red down arrow
-    : '';
+
+    const arrow =
+      dailyChangeMonetary > 0
+        ? '<span style="color: green;">▲</span>' // Green up arrow
+        : dailyChangeMonetary < 0
+        ? '<span style="color: red;">▼</span>' // Red down arrow
+        : "";
 
     // Update the DOM
     todaysChangeElement.innerHTML = `
-    ${dailyChangeMonetary >= 0 ? "+" : ""}${dailyChangeMonetary.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })} (${dailyChangePercentage.toFixed(2)}%) 
+    ${dailyChangeMonetary >= 0 ? "+" : ""}${dailyChangeMonetary.toLocaleString(
+      undefined,
+      {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }
+    )} (${dailyChangePercentage.toFixed(2)}%) 
     ${arrow}
     `;
-
-    
   }
-  
 
   // Function to populate the table
   function populateTable(data) {
@@ -364,11 +373,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const todayChange = (
         currentPrice - parseFloat(stockData[stockData.length - 2].StockPrice)
       ).toFixed(2);
-      
-      const gainLoss = (
-        (marketValue - 10000) / 100
-      ).toFixed(2);
-      
+
+      const gainLoss = ((marketValue - 10000) / 100).toFixed(2);
+
       // Calculate total market value
       let totalMarketValue = 0;
 
@@ -382,17 +389,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Inside the row generation loop
-      const percentageOfTotal = ((marketValue / totalMarketValue) * 100).toFixed(2);
+      const percentageOfTotal = (
+        (marketValue / totalMarketValue) *
+        100
+      ).toFixed(2);
 
       // Determine arrow color based on todayChange
-      const arrow = todayChange > 0 
-        ? '<span style="color: green;">▲</span>' // Green up arrow
-        : todayChange < 0
-        ? '<span style="color: red;">▼</span>'   // Red down arrow
-        : ''; // No arrow for zero change
-    
-      
-        tr.innerHTML = `
+      const arrow =
+        todayChange > 0
+          ? '<span style="color: green;">▲</span>' // Green up arrow
+          : todayChange < 0
+          ? '<span style="color: red;">▼</span>' // Red down arrow
+          : ""; // No arrow for zero change
+
+      tr.innerHTML = `
         <td><button class="stock-button" data-stock="${stockName}">${stockName}</button></td>
         <td>${industry}</td>
         <td>${units.toFixed(2)}</td>
@@ -414,9 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>${gainLoss}%</td>
         <td style="height: 40px;"><div id="chart-${index}" style="width: 200px; height: 40px;"></div></td>
       `;
-      
-
-      
 
       // Append the row to the table body
       tableBody.appendChild(tr);
@@ -429,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
           chart: {
             type: "line",
             height: 45, // Set fixed chart height to fit smaller container
-            width: 200,  // Set fixed chart width to fit smaller container
+            width: 200, // Set fixed chart width to fit smaller container
           },
           title: { text: null }, // No title to save space
           xAxis: {
@@ -437,8 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
             visible: false, // Hide x-axis labels
           },
           yAxis: {
-            visible: false, 
-
+            visible: false,
           },
           series: [
             {
@@ -453,7 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
           exporting: { enabled: false }, // Disable the dropdown menu
           tooltip: { enabled: false }, // Disable tooltip
           hover: { enabled: false }, // Disable chart interaction
-        });        
+        });
       } else {
         console.error(`Chart container #chart-${index} not found.`);
       }
@@ -463,7 +469,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTotalMarketValue(groupedData);
     updateTodaysChange(groupedData);
     createStockChart(); // Defaults to TOTAL
-
   }
 
   // Parse the CSV file using Papa Parse
@@ -481,7 +486,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 });
-
 
 function createStockChart(stockName = "TOTAL") {
   let dataToPlot;
@@ -533,32 +537,61 @@ function createStockChart(stockName = "TOTAL") {
 
   // Render the chart using Highcharts
   Highcharts.chart("stock-chart", {
-    chart: { type: "line" },
+    chart: {
+      type: "line",
+      zoomType: "x", // Zoom along the x-axis
+      panning: true, // Enable panning
+      panKey: "shift", // Hold 'Shift' to pan
+    },
     title: { text: dataToPlot.title },
     xAxis: {
       categories: dataToPlot.xAxisCategories,
-      tickInterval: 22, 
+      tickInterval: 22,
       labels: {
         formatter: function () {
           const date = new Date(this.value);
           return date.toLocaleString("default", { month: "short" });
-        }
-      }
+        },
+      },
     },
     yAxis: {
-      title: { text: stockName === "TOTAL" ? "Portfolio Value ($)" : "Stock Price ($)" },
-      
+      title: {
+        text: stockName === "TOTAL" ? "Portfolio Value ($)" : "Stock Price ($)",
+      },
     },
     series: [
       {
-        name: stockName === "TOTAL" ? "Total Portfolio Value" : `${stockName} Stock Price`,
+        name:
+          stockName === "TOTAL"
+            ? "Total Portfolio Value"
+            : `${stockName} Stock Price`,
         data: dataToPlot.seriesData,
       },
     ],
+    tooltip: {
+      formatter: function () {
+        // Parse the correct date using the index of the data point
+        const dateIndex = this.point.index;
+        const formattedDate = new Date(dataToPlot.xAxisCategories[dateIndex])
+          .toLocaleDateString("default", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+  
+        const roundedValue = Highcharts.numberFormat(this.y, 2); // Round to 2 decimals
+  
+        return `
+          <b>${this.series.name}</b><br>
+          Date: <b>${formattedDate}</b><br>
+          Value: <b>$${roundedValue}</b>
+        `;
+      },
+    },
     legend: { enabled: false }, // Hide legend
+    exporting: { enabled: false }, // Disable the dropdown menu
   });
 }
-
 
 // Render stock-specific chart when a button is clicked
 document.addEventListener("click", (event) => {

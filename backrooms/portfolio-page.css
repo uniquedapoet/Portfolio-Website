@@ -36,12 +36,12 @@ nav {
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
-  color: rgb(255, 255, 255);
+  color: black;
   text-decoration: underline;
   text-underline-offset: 1rem;
   text-decoration-color: rgb(255, 255, 255);
