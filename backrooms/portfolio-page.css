@@ -1,0 +1,138 @@
+nav,
+.nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+}
+
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+
+
+/* NAVIGATION */
+nav,
+.nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+
+}
+
+.nav-links {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(255, 255, 255);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #3b5f7f;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.key-metrics {
+  display: flex;
+  justify-content: space-around;
+  background: #f2f2f2;
+  padding: 1rem;
+}
+
+.key-metrics .metric {
+  text-align: center;
+}
+
+main {
+  padding: 1rem;
+}
+
+/* Holdings Table */
+.holdings-table {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.holdings-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr {
+  height: 40px; /* Fix the row height */
+}
+
+.holdings-table th, .holdings-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+}
+
+/* Charts Row */
+.charts-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #fff;
+  padding: .5rem;
+  border-radius: 5px;
+}
+
+.chart-container {
+  flex: 1;
+  min-width: 300px;
+  background: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.chart-container h3 {
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .charts-row {
+    flex-direction: column;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  margin-top: 1rem;
+}

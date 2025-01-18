@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Landing Page</title>
+    <link rel="stylesheet" href="../projectStyle.css" />
+    <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>Brick & Mortar vs. E-Commerce: How Two Giants Compete</h1>
+        <ul class="nav-links">
+          <li><a href="../index.html">Back To Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About the Project</h2>
+        <p style="margin: 20px">
+          This project presents a machine learning-based stock trading model for
+          S&P 500 stocks, utilizing a combination of technical indicators and
+          machine learning algorithms. The model is designed to predict stock
+          price movements and generate actionable trading signals, adopting a
+          conservative trading approach by limiting its trades to one share per
+          day.
+        </p>
+        <p>
+          The focus of this model is to maximize profitability while minimizing
+          risk over the long term. Using Yahoo Finance data spanning from 2010
+          to the present, the model analyzes historical price data, volume, and
+          technical indicators to make informed buy and sell decisions. Tested
+          via a stock market simulation, the model demonstrates an average
+          return of 23% profit annualized profit.
+        </p>
+        <!-- <h3><a href="backrooms/portfolio-page.html">Click Here To See Interactive Portfolio Dashboard!</a></h2></h3> -->
+        <div>
+          <h2>Model Performance Summary</h2>
+          <img
+            src="../assets/stock_chart.png"
+            alt="Project 2"
+            class="project-img"
+          />
+          <p>
+            This data frame highlights key aspects of the model's performance
+            over the past year. It provides a snapshot of how the model manages
+            cash, stock holdings, and portfolio value, as well as how it
+            responds to market conditions.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Cash Management</strong>: The model holds an average cash
+              balance of <strong>~$5,954</strong>, indicating that it is modest
+              with its investments while still being exposed to the market. This
+              approach ensures liquidity, aligning with the model's restriction
+              of buying or selling only one share at a time, with one exception:
+              if there are five consecutive buy signals, the model purchases
+              five shares. This strategy was tested extensively and was shown to
+              <strong>maximize profits</strong> without negatively impacting
+              potential losses.
+            </li>
+            <br />
+            <li>
+              <strong>Shares Held</strong>: On average, the model holds
+              <strong>~40 shares</strong> at any given time. This is a positive
+              outcome, as the goal of the model is to maximize the portfolio's
+              value rather than accumulate cash. By maintaining a balance
+              between investing and preserving liquidity, the model successfully
+              builds the user’s portfolio, as intended, by maintaining an active
+              presence in the market.
+            </li>
+            <br />
+            <li>
+              <strong>Portfolio Value</strong>: The portfolio maintains an
+              average value of <strong>~$10,577</strong>, with a typical
+              <strong>~5.7% profit</strong> over the year. This figure indicates
+              that the model
+              <strong>consistently avoids negative returns</strong>, a promising
+              sign for long-term profitability. The portfolio's steady growth,
+              combined with its measured risk approach, suggests that the model
+              is capable of yielding positive returns even under varying market
+              conditions.
+            </li>
+            <br />
+            <li>
+              The <strong>standard deviation</strong> of the portfolio value
+              (<strong>$1,491</strong>) reflects modest fluctuations, which is
+              expected in a dynamic trading strategy.
+            </li>
+            <li>
+              The <strong>median portfolio value</strong> of
+              <strong>$10,063.33</strong> shows that, for most of the year, the
+              portfolio hovered slightly above the breakeven point.
+            </li>
+            <li>
+              The <strong>maximum portfolio value</strong> reached
+              <strong>$18,802</strong>, which shows the potential upside of the
+              strategy, particularly in favorable market conditions.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          If you have any questions or would like to get in touch, please
+          <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Eduardo Benjamin</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Landing Page</title>
+    <link rel="stylesheet" href="../projectStyle.css" />
+    <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>Brick & Mortar vs. E-Commerce: How Two Giants Compete</h1>
+        <ul class="nav-links">
+          <li><a href="../index.html">Back To Portfolio</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About the Project</h2>
+        <p style="margin: 20px">
+          This project presents a machine learning-based stock trading model for
+          S&P 500 stocks, utilizing a combination of technical indicators and
+          machine learning algorithms. The model is designed to predict stock
+          price movements and generate actionable trading signals, adopting a
+          conservative trading approach by limiting its trades to one share per
+          day.
+        </p>
+        <p>
+          The focus of this model is to maximize profitability while minimizing
+          risk over the long term. Using Yahoo Finance data spanning from 2010
+          to the present, the model analyzes historical price data, volume, and
+          technical indicators to make informed buy and sell decisions. Tested
+          via a stock market simulation, the model demonstrates an average
+          return of 23% profit annualized profit.
+        </p>
+        <!-- <h3><a href="backrooms/portfolio-page.html">Click Here To See Interactive Portfolio Dashboard!</a></h2></h3> -->
+        <div>
+          <h2>Model Performance Summary</h2>
+          <img
+            src="../assets/stock_chart.png"
+            alt="Project 2"
+            class="project-img"
+          />
+          <p>
+            This data frame highlights key aspects of the model's performance
+            over the past year. It provides a snapshot of how the model manages
+            cash, stock holdings, and portfolio value, as well as how it
+            responds to market conditions.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Cash Management</strong>: The model holds an average cash
+              balance of <strong>~$5,954</strong>, indicating that it is modest
+              with its investments while still being exposed to the market. This
+              approach ensures liquidity, aligning with the model's restriction
+              of buying or selling only one share at a time, with one exception:
+              if there are five consecutive buy signals, the model purchases
+              five shares. This strategy was tested extensively and was shown to
+              <strong>maximize profits</strong> without negatively impacting
+              potential losses.
+            </li>
+            <br />
+            <li>
+              <strong>Shares Held</strong>: On average, the model holds
+              <strong>~40 shares</strong> at any given time. This is a positive
+              outcome, as the goal of the model is to maximize the portfolio's
+              value rather than accumulate cash. By maintaining a balance
+              between investing and preserving liquidity, the model successfully
+              builds the user’s portfolio, as intended, by maintaining an active
+              presence in the market.
+            </li>
+            <br />
+            <li>
+              <strong>Portfolio Value</strong>: The portfolio maintains an
+              average value of <strong>~$10,577</strong>, with a typical
+              <strong>~5.7% profit</strong> over the year. This figure indicates
+              that the model
+              <strong>consistently avoids negative returns</strong>, a promising
+              sign for long-term profitability. The portfolio's steady growth,
+              combined with its measured risk approach, suggests that the model
+              is capable of yielding positive returns even under varying market
+              conditions.
+            </li>
+            <br />
+            <li>
+              The <strong>standard deviation</strong> of the portfolio value
+              (<strong>$1,491</strong>) reflects modest fluctuations, which is
+              expected in a dynamic trading strategy.
+            </li>
+            <li>
+              The <strong>median portfolio value</strong> of
+              <strong>$10,063.33</strong> shows that, for most of the year, the
+              portfolio hovered slightly above the breakeven point.
+            </li>
+            <li>
+              The <strong>maximum portfolio value</strong> reached
+              <strong>$18,802</strong>, which shows the potential upside of the
+              strategy, particularly in favorable market conditions.
+            </li>
+          </ul>
+        </div>
+        <h3 style="text-align: center; padding: 1rem; font-size: 22px;">Interactive Product Breakdown Chart</h3>
+        <!DOCTYPE html>
+          <html>
+          <head>
+          <meta charset="UTF-8">
+          <style>
+            #vis.vega-embed {
+              width: 100%;
+              display: flex;
+            }
+
+            #vis.vega-embed details,
+            #vis.vega-embed details summary {
+              position: relative;
+            }
+          </style>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+          </head>
+          <body>
+          <div id="vis"></div>
+          <script>
+            (function(vegaEmbed) {
+              var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "strokeOpacity": 0}}, "vconcat": [{"hconcat": [{"data": {"name": "empty"}, "mark": {"type": "text", "text": ""}, "width": 75}, {"layer": [{"mark": {"type": "arc", "innerRadius": 50, "stroke": "orange"}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#FF9900", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1, "empty": false}, "value": 0.2}, "theta": {"field": "percentage", "stack": true, "type": "quantitative"}}, "name": "view_2"}, {"mark": {"type": "text", "fontSize": 18, "fontWeight": "bold"}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#FF9900", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1, "empty": false}, "value": 0}, "text": {"field": "fraction", "format": ".1%", "type": "quantitative"}, "theta": {"field": "percentage", "stack": true, "type": "quantitative"}}, "transform": [{"calculate": "datum.percentage / 100", "as": "fraction"}]}], "data": {"name": "data-5569d3b02af7b323013fcf56697110ef"}, "height": 350, "title": "Amazon Inventory", "width": 350}, {"layer": [{"mark": {"type": "rect", "stroke": "black", "strokeWidth": 1}, "encoding": {"color": {"condition": {"param": "param_1", "value": "white", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1, "empty": false}, "value": 0.2}, "y": {"axis": null, "field": "product_category", "type": "nominal"}}, "name": "view_1", "title": "Product Category"}, {"mark": {"type": "text", "align": "center", "baseline": "middle", "font": "sans-serif", "fontWeight": "bold"}, "encoding": {"opacity": {"condition": {"param": "param_1", "value": 1, "empty": false}, "value": 0.2}, "size": {"condition": {"param": "param_1", "value": 13, "empty": false}, "value": 10}, "text": {"field": "product_category", "type": "nominal"}, "y": {"axis": null, "field": "product_category", "type": "nominal"}}}], "data": {"name": "data-64f56a896074f130670b7c7a159b4594"}, "height": 350, "width": 150}, {"layer": [{"mark": {"type": "arc", "innerRadius": 50, "stroke": "blue"}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#0061F2", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1.0, "empty": false}, "value": 0.2}, "theta": {"field": "percentage", "stack": true, "type": "quantitative"}}, "name": "view_3"}, {"mark": {"type": "text", "fontSize": 18, "fontWeight": "bold"}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#0061F2", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1, "empty": false}, "value": 0}, "text": {"field": "fraction", "format": ".1%", "type": "quantitative"}, "theta": {"field": "percentage", "stack": true, "type": "quantitative"}}, "transform": [{"calculate": "datum.percentage / 100", "as": "fraction"}]}], "data": {"name": "data-701d75038fa26a9cd1ea91bca81a96f1"}, "height": 350, "title": "Walmart Inventory", "width": 350}, {"data": {"name": "empty"}, "mark": {"type": "text", "text": ""}, "width": 75}]}, {"hconcat": [{"data": {"name": "empty"}, "mark": {"type": "text", "text": ""}, "width": 75}, {"layer": [{"mark": {"type": "bar", "size": 20}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#FF9900", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1.0, "empty": false}, "value": 0.2}, "x": {"axis": {"labels": false, "ticks": false, "title": null}, "field": "product_category", "type": "nominal"}, "y": {"axis": {"format": "$,.0f", "labelColor": "orange", "labelFontWeight": "bold", "title": null}, "field": "avg_price", "scale": {"domain": [0, 130]}, "type": "quantitative"}}, "name": "view_4", "title": "Amazon Average Product Price by Category", "transform": [{"filter": "(datum.store === 'Amazon')"}]}, {"mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -5, "fontWeight": "bold"}, "encoding": {"color": {"value": "orange"}, "opacity": {"condition": {"param": "param_1", "value": 1.0, "empty": false}, "value": 0}, "text": {"field": "avg_price", "format": "$,.0f", "type": "quantitative"}, "x": {"field": "product_category", "type": "nominal"}, "y": {"field": "avg_price", "type": "quantitative"}}, "transform": [{"filter": "(datum.store === 'Amazon')"}]}], "data": {"name": "data-64f56a896074f130670b7c7a159b4594"}, "height": 300, "width": 400}, {"layer": [{"mark": {"type": "bar", "size": 20}, "encoding": {"color": {"condition": {"param": "param_1", "value": "#0061F2", "empty": false}, "value": "gray"}, "opacity": {"condition": {"param": "param_1", "value": 1.0, "empty": false}, "value": 0.2}, "x": {"axis": {"labels": false, "ticks": false, "title": null}, "field": "product_category", "type": "nominal"}, "y": {"axis": {"format": "$,.0f", "labelColor": "blue", "labelFontWeight": "bold", "title": null}, "field": "avg_price", "scale": {"domain": [0, 130]}, "type": "quantitative"}}, "name": "view_5", "title": "Walmart Average Product Price by Category", "transform": [{"filter": "(datum.store === 'Walmart')"}]}, {"mark": {"type": "text", "align": "center", "baseline": "bottom", "dy": -5, "fontWeight": "bold"}, "encoding": {"color": {"value": "blue"}, "opacity": {"condition": {"param": "param_1", "value": 1.0, "empty": false}, "value": 0}, "text": {"field": "avg_price", "format": "$,.0f", "type": "quantitative"}, "x": {"field": "product_category", "type": "nominal"}, "y": {"field": "avg_price", "type": "quantitative"}}, "transform": [{"filter": "(datum.store === 'Walmart')"}]}], "data": {"name": "data-64f56a896074f130670b7c7a159b4594"}, "height": 300, "width": 400}, {"data": {"name": "empty"}, "mark": {"type": "text", "text": ""}, "width": 75}]}], "params": [{"name": "param_1", "select": {"type": "point", "fields": ["product_category"], "on": "mouseover"}, "views": ["view_2", "view_1", "view_3", "view_4", "view_5"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"empty": [{}], "data-5569d3b02af7b323013fcf56697110ef": [{"product_category": "Arts & Crafts", "count": 87723, "percentage": 6.150229574076813}, {"product_category": "Automotive", "count": 86730, "percentage": 6.080610683169545}, {"product_category": "Baby & Kids", "count": 189177, "percentage": 13.263134869248994}, {"product_category": "Electronics & Gadgets", "count": 194068, "percentage": 13.606041209055084}, {"product_category": "Fashion", "count": 303931, "percentage": 21.30849862269576}, {"product_category": "Health & Wellness", "count": 103645, "percentage": 7.266515556982676}, {"product_category": "Home & Living", "count": 170961, "percentage": 11.986017329705392}, {"product_category": "Industrial & Scientific", "count": 171953, "percentage": 12.055566110954144}, {"product_category": "Miscellaneous", "count": 8810, "percentage": 0.617666091533768}, {"product_category": "Office Supplies", "count": 16175, "percentage": 1.1340237265106352}, {"product_category": "Party Supplies", "count": 28590, "percentage": 2.0044351369977784}, {"product_category": "Pet Supplies", "count": 42223, "percentage": 2.9602401115584884}, {"product_category": "Sports & Outdoors", "count": 22351, "percentage": 1.567020977510925}], "data-64f56a896074f130670b7c7a159b4594": [{"product_category": "Arts & Crafts", "avg_price": 21.149484171767952, "store": "Amazon"}, {"product_category": "Automotive", "avg_price": 48.52654121987778, "store": "Amazon"}, {"product_category": "Baby & Kids", "avg_price": 28.728923389206933, "store": "Amazon"}, {"product_category": "Electronics & Gadgets", "avg_price": 88.93639806665703, "store": "Amazon"}, {"product_category": "Fashion", "avg_price": 45.497603008577606, "store": "Amazon"}, {"product_category": "Health & Wellness", "avg_price": 21.467207101162625, "store": "Amazon"}, {"product_category": "Home & Living", "avg_price": 41.65445516813776, "store": "Amazon"}, {"product_category": "Industrial & Scientific", "avg_price": 35.79435182869737, "store": "Amazon"}, {"product_category": "Miscellaneous", "avg_price": 26.356758229284903, "store": "Amazon"}, {"product_category": "Office Supplies", "avg_price": 84.09099659969088, "store": "Amazon"}, {"product_category": "Party Supplies", "avg_price": 14.359492130115425, "store": "Amazon"}, {"product_category": "Pet Supplies", "avg_price": 26.883848376477275, "store": "Amazon"}, {"product_category": "Sports & Outdoors", "avg_price": 28.724259764663774, "store": "Amazon"}, {"product_category": "Arts & Crafts", "avg_price": 10.67578947368421, "store": "Walmart"}, {"product_category": "Automotive", "avg_price": 35.80777251184834, "store": "Walmart"}, {"product_category": "Baby & Kids", "avg_price": 78.89395830295962, "store": "Walmart"}, {"product_category": "Electronics & Gadgets", "avg_price": 93.14015151515152, "store": "Walmart"}, {"product_category": "Fashion", "avg_price": 45.0248875739645, "store": "Walmart"}, {"product_category": "Health & Wellness", "avg_price": 29.256263766710536, "store": "Walmart"}, {"product_category": "Home & Living", "avg_price": 46.50635243882411, "store": "Walmart"}, {"product_category": "Industrial & Scientific", "avg_price": 44.24740157480315, "store": "Walmart"}, {"product_category": "Miscellaneous", "avg_price": 28.632739914952303, "store": "Walmart"}, {"product_category": "Office Supplies", "avg_price": 23.58857142857143, "store": "Walmart"}, {"product_category": "Party Supplies", "avg_price": 16.727727272727275, "store": "Walmart"}, {"product_category": "Pet Supplies", "avg_price": 44.0366903409091, "store": "Walmart"}, {"product_category": "Sports & Outdoors", "avg_price": 124.9119465557627, "store": "Walmart"}], "data-701d75038fa26a9cd1ea91bca81a96f1": [{"product_category": "Arts & Crafts", "count": 19, "percentage": 0.0316883203522407}, {"product_category": "Automotive", "count": 211, "percentage": 0.3519071365433046}, {"product_category": "Baby & Kids", "count": 6859, "percentage": 11.439483647158893}, {"product_category": "Electronics & Gadgets", "count": 132, "percentage": 0.2201504361313564}, {"product_category": "Fashion", "count": 845, "percentage": 1.4092963525075468}, {"product_category": "Health & Wellness", "count": 14437, "percentage": 24.078120048699944}, {"product_category": "Home & Living", "count": 6089, "percentage": 10.15527276972598}, {"product_category": "Industrial & Scientific", "count": 127, "percentage": 0.21181140445971414}, {"product_category": "Miscellaneous", "count": 8701, "percentage": 14.51158291499191}, {"product_category": "Office Supplies", "count": 14, "percentage": 0.023349288680598407}, {"product_category": "Party Supplies", "count": 198, "percentage": 0.33022565419703465}, {"product_category": "Pet Supplies", "count": 1408, "percentage": 2.3482713187344686}, {"product_category": "Sports & Outdoors", "count": 20919, "percentage": 34.88884070781701}]}};
+              var embedOpt = {"mode": "vega-lite"};
+
+              function showError(el, error){
+                  el.innerHTML = ('<div style="color:red;">'
+                                  + '<p>JavaScript Error: ' + error.message + '</p>'
+                                  + "<p>This usually means there's a typo in your chart specification. "
+                                  + "See the javascript console for the full traceback.</p>"
+                                  + '</div>');
+                  throw error;
+              }
+              const el = document.getElementById('vis');
+              vegaEmbed("#vis", spec, embedOpt)
+                .catch(error => showError(el, error));
+            })(vegaEmbed);
+
+          </script>
+          </body>
+          </html>
+        <div>
+          <h2>Interactive Product Breakdown Chart</h2>
+
+          <p>
+            The bar chart above shows the <strong>Profit %</strong> for each
+            stock in the model's portfolio after one year of trading. The stocks
+            are listed on the x-axis, while the y-axis represents the percentage
+            of profit (or loss) realized by the model for each stock.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Top Performers</strong>: Stocks such as
+              <strong>Meta (META)</strong>,
+              <strong>Howmet Aerospace Inc (HWM)</strong>, and
+              <strong>Constellation Energy Group (CEG)</strong> delivered the
+              highest returns, all showing a significant profit around
+              <strong>75%</strong>.
+            </li>
+            <br />
+            <li>
+              <strong>Consistent Gainers</strong>: The majority of stocks
+              performed well, showing gains of approximately
+              <strong>10%</strong>, reflecting positive model performance, with
+              more stocks performing better than worse.
+            </li>
+            <br />
+            <li>
+              <strong>Modest Gains</strong>: Companies such as
+              <strong>Apple (KO)</strong>, <strong>Netflix (NFLX)</strong>, and
+              <strong>NVIDIA (NVDA)</strong> all had modest gains, with
+              <strong>AAPL</strong> gaining about <strong>20%</strong>, and
+              <strong>NFLX</strong> and <strong>NVDA</strong> gaining about
+              <strong>45%</strong> each.
+            </li>
+            <br />
+            <li>
+              <strong>Losers</strong>: A few stocks, such as
+              <strong>Disney (DIS)</strong> and
+              <strong>Lululemon (LULU)</strong>, recorded losses, represented by
+              red bars dipping below 0%. Both took losses of around
+              <strong>5%</strong>. These small losses are to be expected from a
+              dynamic trading model.
+            </li>
+          </ul>
+
+          <p>
+            This chart provides a quick, clear overview of the model's
+            performance across a diverse set of S&P 500 stocks, showcasing the
+            overall effectiveness of the trading strategy while highlighting
+            potential areas of improvement in stock selection or risk
+            management.
+          </p>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          If you have any questions or would like to get in touch, please
+          <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Eduardo Benjamin</p>
+    </footer>
+  </body>
+</html>

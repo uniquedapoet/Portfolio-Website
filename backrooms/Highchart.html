@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>09/2014 - 11/2024 Portfolio Values</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+  <body>
+    <!-- HTML for Header -->
+    <header>
+      <nav>
+        <h1>Portfolio Value by Stock 09/2014 - 11/2024</h1>
+        <ul class="nav-links">
+          <li><a href="../StockModel.html">Back To Project Page</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h4></h4>
+    <section class="charts-container">
+      <div id="portfolio-chart" style="width: 50%; float: left;"></div>
+      <div id="treemap-container" style="width: 40%; float: right;"></div>
+    </section>
+    <div id="controls">
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" />
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" />
+      <button id="update-chart">Update Chart</button>
+      <button id="reset-chart">Reset Stocks</button>
+      <button id="toggle-global-min-max">Disable Global Min/Max</button>
+    </div>
+    <script src="graphs.js"></script>
+  </body>
+</html>
