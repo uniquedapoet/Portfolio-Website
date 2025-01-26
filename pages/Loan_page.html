@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Landing Page</title>
-    <link rel="stylesheet" href="projectStyle.css" />
+    <link rel="stylesheet" href="../projectStyle.css" />
     <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
   </head>
 
   <body>
     <header>
       <nav>
-        <h1>Formula 1 Api</h1>
+        <h1>Loan Default Model</h1>
         <ul class="nav-links">
-          <li><a href="index.html">Back To Portfolio</a></li>
+          <li><a href="../index.html">Back To Portfolio</a></li>
         </ul>
       </nav>
     </header>
@@ -56,77 +56,70 @@
           loan defaults.
         </p>
       </section>
-      <section id="features">
-        <h2>Features</h2>
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="../assets/Property_Distribution.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <li>
-              This multi-panel visualization, created using the Altair library,
-              and provides an in-depth view of how various borrower
-              characteristics, such as age, income ratio, loan amount, and loan
-              intent, are distributed across both defaulted and fully paid
-              loans.
-            </li>
-            <li>
-              By analyzing these distributions, I was able to identify important
-              patterns and trends, which guided the feature engineering and
-              model-building process. These insights were crucial in
-              understanding the underlying factors contributing to loan
-              defaults.
-            </li>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
+      <section id="about">
+        <div>
+          <h2>Model Performance Summary</h2>
+          <img
+          src="../assets/Property_Distribution.png"
+          alt="Project 2"
+          class="project-img"
+        />
+          <p>
+            This multi-panel visualization, created using the Altair library,
+            and provides an in-depth view of how various borrower
+            characteristics, such as age, income ratio, loan amount, and loan
+            intent, are distributed across both defaulted and fully paid
+            loans.
+          </p>
+          <p> 
+            By analyzing these distributions, I was able to identify important
+            patterns and trends, which guided the feature engineering and
+            model-building process. These insights were crucial in
+            understanding the underlying factors contributing to loan
+            defaults.
+          </p>
+          <img
                 src="../assets/conf_matrix.svg"
                 alt="Project 2"
-                class="project-img"
+                style="width: 50%; height: 50%;"        
               />
-            </div>
-            <li>
+            <li style="width: 50%; height: 50%;"        
+            >
               This is a confusion matrix that illustrates the performance of the
               final model on the test set. The confusion matrix shows the number
               of true positives (bottum left), true negatives (top left), false positives(top right), and false
               negatives (bottum left) predicted by the model.
             </li>
-            <li>
+            <li style="width: 50%; height: 50%;"        
+            >
               The high number of true positives and true negatives, along with
               the low number of false positives and false negatives, indicate
               that the model is effective in predicting loan defaults and
               non-defaults.
             </li>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="../assets/ShapFeatureImportance.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <li>
-              This feature importance plot, generated using the SHAP library, it
-              highlights the most important features in the final model.
-            </li>
-            <li>
-              Dots represent individual loans. Their position on the horizontal
-              axis shows whether they increase (right of mid line) or decrease (left of mid line) the
-              chance of default.
-            </li>
-            <li>
-              Color indicates the feature's value: blue means low, and red
-              means high.
-            </li>
-            <li>
-              For example, a high DTI (debt-to-income ratio) increases the likelihood of default, while a high annual income decreases it.
-            </li>
+            <img
+            src="../assets/ShapFeatureImportance.png"
+            alt="Project 2"
+            class="project-img"
+          />
+          <li>
+            This feature importance plot, generated using the SHAP library, it
+            highlights the most important features in the final model.
+          </li>
+          <li>
+            Dots represent individual loans. Their position on the horizontal
+            axis shows whether they increase (right of mid line) or decrease (left of mid line) the
+            chance of default.
+          </li>
+          <li>
+            Color indicates the feature's value: blue means low, and red
+            means high.
+          </li>
+          <li>
+            For example, a high DTI (debt-to-income ratio) increases the likelihood of default, while a high annual income decreases it.
+          </li>
+        </div>   
+      </section>
           </div>
         </div>
       </section>
