@@ -356,7 +356,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (event) => {
     if (event.target && event.target.classList.contains("stock-button")) {
       const stockName = event.target.dataset.stock;
-      console.log("Stock Name:", stockName);
       createStockChart(stockName);
     }
   });

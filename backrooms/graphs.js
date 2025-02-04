@@ -188,8 +188,7 @@ function createTreemap() {
           click: function (event) {
             const stockName = event.point.name; // Capture the stock name from the clicked point
             if (stocks[stockName]) {
-              const filteredStocks = { [stockName]: stocks[stockName] }; // Filter data for the selected stock
-              updateChart(filteredStocks, stockName); // Update the chart with the selected stock
+              createStockChart(stockName);            
             }
           },
         },
@@ -403,7 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
           : ""; // No arrow for zero change
 
       tr.innerHTML = `
-        <td><button class="stock-button" data-stock="${stockName}">${stockName}</button></td>
+        <td>${stockName}</td>
         <td>${industry}</td>
         <td>${units.toFixed(2)}</td>
         <td>$${currentPrice.toFixed(2)}</td>

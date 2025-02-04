@@ -352,7 +352,7 @@ section {
 }
   
   article {
-    flex: 1 1 15thj0px; /* Each article takes up equal space with a minimum width of 200px */
+    flex: 1 1 150px; /* Each article takes up equal space with a minimum width of 200px */
     max-width: 300px; /* Set a max width for consistency */
     min-height: 100px; /* Ensures all articles are at least the same height */
     text-align: center;

@@ -1,138 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Landing Page</title>
-    <link rel="stylesheet" href="../projectStyle.css" />
-    <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
-  </head>
 
-  <body>
-    <header>
-      <nav>
-        <h1>Loan Default Model</h1>
-        <ul class="nav-links">
-          <li><a href="../index.html">Back To Portfolio</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="about">
-        <h2>About the Project</h2>
-        <p style="margin: 20px">
-          This Loan Default Model and Exploratory Data Analysis project was
-          developed to enhance my expertise in Machine Learning and data
-          analysis. The project involves a thorough examination of loan data,
-          followed by the creation of a predictive model that assesses the
-          likelihood of loan defaults. The complete implementation is available
-          in a Jupyter Notebook on Kaggle.
-          <a
-            href="https://www.kaggle.com/code/eddiebenjamin/credit-risk-model-and-eda"
-            target="_blank"
-          >
-            [Check it out here]
-          </a>
-        </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Landing Page</title>
+  <link rel="stylesheet" href="../projectStyle.css" />
+  <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
+</head>
 
-        <p style="margin: 20px">
-          The dataset, sourced from Kaggle, includes various loan attributes
-          such as loan amount, interest rate, and borrower income. After
-          cleaning and preprocessing the data for accuracy and consistency, I
-          conducted an exploratory data analysis (EDA) to identify patterns and
-          correlations. This analysis included visualizations to illustrate how
-          different factors impact the probability of loan default, providing
-          valuable insights into borrower behavior.
-        </p>
-        <p style="margin: 20px">
-          In building the predictive model, the data was split into training and
-          testing sets. Given the class imbalance in the data, I applied the
-          SMOTE technique to balance it. Various models, including Logistic
-          Regression, Random Forest, and advanced stacking models, were trained
-          and evaluated using metrics such as accuracy, precision, recall, and
-          F1 score. The final model, a stacking ensemble of XGBoost, CatBoost,
-          and LightGBM, with a neural network as the meta-classifier, achieved a
-          high F1 score of 0.96, demonstrating its effectiveness in predicting
-          loan defaults.
-        </p>
-      </section>
-      <section id="about">
-        <div>
-          <h2>Model Performance Summary</h2>
-          <img
-          src="../assets/Property_Distribution.png"
-          alt="Project 2"
-          class="project-img"
-        />
+<body>
+  <header>
+    <nav>
+      <h1>Loan Default Model</h1>
+      <ul class="nav-links">
+        <li><a href="../index.html">Back To Portfolio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About the Project</h2>
+      <p style="margin: 20px">
+        This Loan Default Model and Exploratory Data Analysis project was
+        developed to enhance my expertise in Machine Learning and data
+        analysis. The project involves a thorough examination of loan data,
+        followed by the creation of a predictive model that assesses the
+        likelihood of loan defaults. The complete implementation is available
+        in a Jupyter Notebook on Kaggle.
+        <a href="https://www.kaggle.com/code/eddiebenjamin/credit-risk-model-and-eda" target="_blank">
+          [Check it out here]
+        </a>
+      </p>
+
+      <p style="margin: 20px">
+        The dataset, sourced from Kaggle, includes various loan attributes
+        such as loan amount, interest rate, and borrower income. After
+        cleaning and preprocessing the data for accuracy and consistency, I
+        conducted an exploratory data analysis (EDA) to identify patterns and
+        correlations. This analysis included visualizations to illustrate how
+        different factors impact the probability of loan default, providing
+        valuable insights into borrower behavior.
+      </p>
+      <p style="margin: 20px">
+        In building the predictive model, the data was split into training and
+        testing sets. Given the class imbalance in the data, I applied the
+        SMOTE technique to balance it. Various models, including Logistic
+        Regression, Random Forest, and advanced stacking models, were trained
+        and evaluated using metrics such as accuracy, precision, recall, and
+        F1 score. The final model, a stacking ensemble of XGBoost, CatBoost,
+        and LightGBM, with a neural network as the meta-classifier, achieved a
+        high F1 score of 0.96, demonstrating its effectiveness in predicting
+        loan defaults.
+      </p>
+    </section>
+    <section id="about">
+      <div>
+        <!-- Top Row: Model Performance Summary -->
+        <h2>Model Performance Summary</h2>
+        <div style="text-align: center; margin: 2rem;">
+          <img src="../assets/Property_Distribution.png" alt="Model Performance Summary" class="project-img"
+            style="width: 80%; height: auto;" />
           <p>
             This multi-panel visualization, created using the Altair library,
-            and provides an in-depth view of how various borrower
-            characteristics, such as age, income ratio, loan amount, and loan
-            intent, are distributed across both defaulted and fully paid
-            loans.
+            provides an in-depth view of how various borrower characteristics, such
+            as age, income ratio, loan amount, and loan intent, are distributed
+            across both defaulted and fully paid loans.
           </p>
-          <p> 
+          <p>
             By analyzing these distributions, I was able to identify important
             patterns and trends, which guided the feature engineering and
-            model-building process. These insights were crucial in
-            understanding the underlying factors contributing to loan
-            defaults.
+            model-building process. These insights were crucial in understanding
+            the underlying factors contributing to loan defaults.
           </p>
-          <img
-                src="../assets/conf_matrix.svg"
-                alt="Project 2"
-                style="width: 50%; height: 50%;"        
-              />
-            <li style="width: 50%; height: 50%;"        
-            >
+        </div>
+        <!-- Second Row: Confusion Matrix and SHAP Feature Importance -->
+        <div
+          style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-top: 20px;">
+          <!-- Confusion Matrix -->
+          <div style="flex: 1; text-align: center;">
+            <img src="../assets/conf_matrix.svg" alt="Confusion Matrix" style="width: 100%; height: auto;" />
+            <p>
               This is a confusion matrix that illustrates the performance of the
-              final model on the test set. The confusion matrix shows the number
-              of true positives (bottum left), true negatives (top left), false positives(top right), and false
-              negatives (bottum left) predicted by the model.
-            </li>
-            <li style="width: 50%; height: 50%;"        
-            >
+              final model on the test set. It shows the number of true positives
+              (bottom left), true negatives (top left), false positives (top
+              right), and false negatives (bottom left) predicted by the model.
+            </p>
+            <p>
               The high number of true positives and true negatives, along with
               the low number of false positives and false negatives, indicate
               that the model is effective in predicting loan defaults and
               non-defaults.
-            </li>
-            <img
-            src="../assets/ShapFeatureImportance.png"
-            alt="Project 2"
-            class="project-img"
-          />
-          <li>
-            This feature importance plot, generated using the SHAP library, it
-            highlights the most important features in the final model.
-          </li>
-          <li>
-            Dots represent individual loans. Their position on the horizontal
-            axis shows whether they increase (right of mid line) or decrease (left of mid line) the
-            chance of default.
-          </li>
-          <li>
-            Color indicates the feature's value: blue means low, and red
-            means high.
-          </li>
-          <li>
-            For example, a high DTI (debt-to-income ratio) increases the likelihood of default, while a high annual income decreases it.
-          </li>
-        </div>   
-      </section>
+            </p>
+          </div>
+
+          <!-- SHAP Feature Importance -->
+          <div style="flex: 1; text-align: center;">
+            <img src="../assets/ShapFeatureImportance.png" alt="SHAP Feature Importance" class="project-img"
+              style="width: 100%; height: auto;" />
+            <p>
+              This feature importance plot, generated using the SHAP library,
+              highlights the most important features in the final model.
+            </p>
+            <p>
+              Dots represent individual loans. Their position on the horizontal
+              axis shows whether they increase (right of mid-line) or decrease
+              (left of mid-line) the chance of default.
+            </p>
+            <p>
+              Color indicates the feature's value: blue means low, and red means
+              high.
+            </p>
+            <p>
+              For example, a high DTI (debt-to-income ratio) increases the
+              likelihood of default, while a high annual income decreases it.
+            </p>
           </div>
         </div>
-      </section>
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>
-          If you have any questions or would like to get in touch, please
-          <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
-        </p>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Eduardo Benjamin</p>
-    </footer>
-  </body>
+      </div>
+    </section>
+
+    </div>
+    </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        If you have any questions or would like to get in touch, please
+        <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
+      </p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Eduardo Benjamin</p>
+  </footer>
+</body>
+
 </html>
