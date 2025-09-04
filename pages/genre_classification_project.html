@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Landing Page</title>
+  <link rel="stylesheet" href="../projectStyle.css" />
+  <!-- <link rel="stylesheet" href="mediaqueries.css" /> -->
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Loan Default Model</h1>
+      <ul class="nav-links">
+        <li><a href="../index.html">Back To Portfolio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About the Project</h2>
+      <p style="margin: 20px">
+        This bot uses <strong>Discord</strong> as an interface to interact with users and analyze songs. 
+        It predicts genres, retrieves lyrics, and provides insights based on a trained machine 
+        learning model and preloaded databases. The project integrates Discord API, Spotify datasets, 
+        Genius API, and multiple machine learning techniques.
+      </p>
+
+      <p style="margin: 20px">
+        The discord bot contains 2 main functionalities: genre prediction and lyrics retrieval. 
+        These functions use the machine learning model and the Genius API to provide users with
+        song genre predictions and lyrics. The bot also stores the results of the predictions in a database,
+        used to improve and retrain the model.
+      </p>
+    </section>
+    <section id="about">
+      <div>
+        <!-- Top Row: Model Performance Summary -->
+        <h2>Model Flow Summary</h2>
+        <div style="text-align: center; margin: 2rem;">
+          <img src="../assets/genre-classification-diagram.svg" alt="Model Performance Summary" class="project-img"
+            style="width: 40%; height: 40%;" />
+          <p>
+           This is a visualization build with Mermaid.js that shows the user interaction with the bot, 
+           the model prediction, and the database storage. This gives a high-level overview of the project
+           and how the different components interact with each other. 
+          </p>
+        </div>
+        <!-- Second Row: Confusion Matrix and SHAP Feature Importance -->
+        <div>
+          <!-- Confusion Matrix -->
+          <div style="flex: 1; text-align: center;">
+            <img src="../assets/genre_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; height: auto;" />
+            <p>
+              This is a confusion matrix that illustrates the performance of the
+              final model on the test set. A row represents the true genre with rows 
+              adding up to 1 representing all the songs of this genre. A column represents
+              the models prediction, with these values having more variance. The warmer colors 
+              represent a higher accuracy with perfect predictions being on the diagonal. 
+            </p>
+            <p>
+              Using this visualization we can understand which genres the 
+              model struggles with and which ones it predicts well. We are able to see 
+              that genres such as Opera and Metal are predicted with high accuracy, while
+              genres such as Pop and HipHop are predicted with lower accuracy. Standing out 
+              is the high number of misclassifications between Pop and Latin, which points out 
+              an obvious overlap between these styles of music.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    </div>
+    </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        If you have any questions or would like to get in touch, please
+        <a href="mailto:eddiebenjamin86@gmail.com.com">email me</a>.
+      </p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Eduardo Benjamin</p>
+  </footer>
+</body>
+
+</html>
